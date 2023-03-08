@@ -40,13 +40,17 @@ public class Player : MonoBehaviour
 
         float moveSpeed = player_movement.x * player_maxSpeed;
         float deltaSpeed = moveSpeed - player_rb2d.velocity.x;
-        float acceleration = (Mathf.Abs(moveSpeed) > 0.01f) ? player_acceleration : player_deceleration;
-        float movement = Mathf.Pow(Mathf.Abs(deltaSpeed) * acceleration, 0.8f) * Mathf.Sign(moveSpeed);
-
-        player_rb2d.AddForce(Vector2.right * movement);
+        float force = deltaSpeed * player_rb2d.mass;
         
-        Debug.Log(player_rb2d.velocity.x);
+        //friction
+        if(Mathf.Abs(moveSpeed) <= 0 && Mathf.Abs(player_rb2d.velocity.x) - player_deceleration > 0.01f ){
+            player_rb2d.velocity = new Vector2 (player_rb2d.velocity.x - (player_deceleration * Mathf.Sign(player_rb2d.velocity.x)), player_rb2d.velocity.y);
+        }
+
+        player_rb2d.AddForce(Vector2.right * force);
+
+        Debug.Log("Velocity: " + player_rb2d.velocity.x + ", Movespeed: " + moveSpeed);
 
         #endregion
-    }
+    } 
 }
