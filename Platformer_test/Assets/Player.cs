@@ -5,21 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //objects assigned through inspector
+    [Header("Objects")]
     [SerializeField] private Rigidbody2D player_rb2d;
     [SerializeField] private GameObject player_camera;
     [SerializeField] private GameObject player_ground_check;
 
     //player stats
+    [Header("Horizontal Movement")]
     [SerializeField] private float player_maxSpeed; 
     [SerializeField] private float player_acceleration;
     [SerializeField] private float player_deceleration;
+
+    [Header("Dashing")]
     [SerializeField] private float player_dash_speed;
+
+    [Header("Jumping")]
     [SerializeField] private float player_jump_speed;
 
     //states
     private Vector2 player_movement;
-    bool isJumping = false;
-    bool isGrounded = true;
+    private bool isJumping = false;
+    private bool isGrounded = true;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +46,7 @@ public class Player : MonoBehaviour
         isGrounded = groundCheck();
 
         #region jumping
+
             //Player can only jump when the space key is pressed and they are grounded
             if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
@@ -52,25 +59,34 @@ public class Player : MonoBehaviour
                 isJumping = false;
                 player_rb2d.velocity = new Vector2(player_rb2d.velocity.x, player_rb2d.velocity.y * 0.5f);
             }
+
+        #endregion
+
+        #region  dashing
+
+            if(Input.GetKeyDown(KeyCode.K)){
+                player_rb2d.velocity = new Vector2((player_dash_speed * Mathf.Sign(player_movement.x)) , player_rb2d.velocity.y);
+            }
+
         #endregion
 
         //Debug logs for testing
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
     }
 
     private void FixedUpdate() {
         #region horizontal movement
 
-        float moveSpeed = player_movement.x * player_maxSpeed;
-        float deltaSpeed = moveSpeed - player_rb2d.velocity.x; //caps the player's speed
-        float force = deltaSpeed * player_rb2d.mass;
-        
-        //deceleration
-        if(Mathf.Abs(moveSpeed) <= 0 && Mathf.Abs(player_rb2d.velocity.x) - player_deceleration > 0.01f && isGrounded ){
-            player_rb2d.velocity = new Vector2 (player_rb2d.velocity.x - (player_deceleration * Mathf.Sign(player_rb2d.velocity.x)), player_rb2d.velocity.y);
-        }
+            float moveSpeed = player_movement.x * player_maxSpeed;
+            float deltaSpeed = moveSpeed - player_rb2d.velocity.x; //caps the player's speed
+            float force = deltaSpeed * player_rb2d.mass;
+            
+            //deceleration
+            if(Mathf.Abs(moveSpeed) <= 0 && Mathf.Abs(player_rb2d.velocity.x) - player_deceleration > 0.01f && isGrounded ){
+                player_rb2d.velocity = new Vector2 (player_rb2d.velocity.x - (player_deceleration * Mathf.Sign(player_rb2d.velocity.x)), player_rb2d.velocity.y);
+            }
 
-        player_rb2d.AddForce(Vector2.right * force);
+            player_rb2d.AddForce(Vector2.right * force);
 
         #endregion
     } 
