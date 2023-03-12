@@ -771,10 +771,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_rb2d: {fileID: 1996748096}
   player_camera: {fileID: 519420028}
-  ground_check: {fileID: 1906627762}
+  player_ground_check: {fileID: 1906627762}
   player_maxSpeed: 25
   player_acceleration: 12
-  player_deceleration: 8
-  player_dash_speed: 10
+  player_deceleration: 3
+  player_dash_speed: 20
+  player_dash_time: 1.5
   player_jump_speed: 8
-  player_ground_check: {fileID: 1906627762}
