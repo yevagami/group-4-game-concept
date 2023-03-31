@@ -2521,15 +2521,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 793587203811055473, guid: f3057ffdf190a0044a96b4d476e4dcab, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 793587203811055473, guid: f3057ffdf190a0044a96b4d476e4dcab, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 994672756722754558, guid: f3057ffdf190a0044a96b4d476e4dcab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 994672756722754558, guid: f3057ffdf190a0044a96b4d476e4dcab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.02
+      objectReference: {fileID: 0}
     - target: {fileID: 1969795690349252879, guid: f3057ffdf190a0044a96b4d476e4dcab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.72
+      value: 0.756
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969795690349252879, guid: f3057ffdf190a0044a96b4d476e4dcab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3057ffdf190a0044a96b4d476e4dcab, type: 3}
