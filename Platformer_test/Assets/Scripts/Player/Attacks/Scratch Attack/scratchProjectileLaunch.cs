@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class barkProjectileLaunch : MonoBehaviour
+public class scratchProjectileLaunch : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public Transform launchPoint;
@@ -15,12 +15,13 @@ public class barkProjectileLaunch : MonoBehaviour
     void Start()
     {
         shootCounter = shootTime;
+        float player_dir = gameObject.GetComponent<Player>().getPlayerDirection();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I) && shootCounter <= 0)
+        if(Input.GetKeyDown(KeyCode.U) && shootCounter <= 0)
             {
                 Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
                 shootCounter = shootTime;
