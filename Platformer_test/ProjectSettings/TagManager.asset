@@ -6,6 +6,7 @@ TagManager:
   tags:
   - floor
   - Weak Point
+  - wall
   layers:
   - Default
   - TransparentFX
