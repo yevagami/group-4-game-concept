@@ -439,7 +439,10 @@ GameObject:
   - component: {fileID: 1299143970}
   - component: {fileID: 1299143969}
   - component: {fileID: 1299143968}
+<<<<<<< Updated upstream
   - component: {fileID: 1299143967}
+=======
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -447,6 +450,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
 --- !u!114 &1299143967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +466,8 @@ MonoBehaviour:
   target: {fileID: 0}
   offset: {x: 0, y: 1, z: -1}
   damping: 0.5
+=======
+>>>>>>> Stashed changes
 --- !u!81 &1299143968
 AudioListener:
   m_ObjectHideFlags: 0
@@ -620,3 +626,14 @@ MonoBehaviour:
   textMeshComponent: {fileID: 1293261385}
   textSpeed: 0
   startLine: 0
+<<<<<<< Updated upstream
+=======
+  timer_text_speed: 0
+  text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.
+  index: 0
+>>>>>>> Stashed changes
