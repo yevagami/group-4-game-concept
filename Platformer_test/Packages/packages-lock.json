@@ -154,7 +154,7 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-<<<<<<< Updated upstream
+
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.0.2",
       "depth": 2,
@@ -173,8 +173,7 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> Stashed changes
+
     "com.unity.test-framework": {
       "version": "1.1.31",
       "depth": 0,
