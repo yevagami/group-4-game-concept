@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class sequence_1 : sequence
 {
-    public override void endSequence()
-    {
-        throw new System.NotImplementedException();
-    }
+    float timer_sequence_duration = 0;
 
     public override void startSequence()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Sequence Starting");
+        timer_sequence_duration += Time.deltaTime;
+        if(timer_sequence_duration >= 10){
+            endSequence();
+        }
+    }
+
+    public override void endSequence()
+    {
+        hasEnded = true;
+        Debug.Log("Sequence Ended");
     }
 }
