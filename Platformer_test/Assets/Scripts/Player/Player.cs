@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 
     //player stats
     [Header("Player Stats")]
-    [SerializeField] float player_max_health;
     [SerializeField] float player_speed; 
 
     [Header("Horizontal Movement")]
@@ -213,7 +212,7 @@ public class Player : MonoBehaviour
     }
 
     //Float to get the player's direction based on the last input
-    float getPlayerDirection(){
+    public float getPlayerDirection(){
         /*
         - 1 means right
         - -1 means left
