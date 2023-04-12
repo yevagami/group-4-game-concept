@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 3804740007242012810}
   platform_trigger: {fileID: 3804740007887725774}
-  duration: 3
+  duration: 1.1
   drop_speed: 5
   drop_time: 1
   cooldown: 1
