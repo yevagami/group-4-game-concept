@@ -22,7 +22,7 @@ public class CollideSceneSwitcher : MonoBehaviour
         if (collision.tag == "Player")
         {
             //you should use this one 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
             //this one is just for loop to main menu
             Debug.Log("Collided - Switching Scene");
