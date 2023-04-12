@@ -4,26 +4,31 @@ using UnityEngine;
 
 public class sequenceManager : MonoBehaviour
 {
-    //The current sequences in the scene
-    public sequence[] sequenceData;
-    public List<sequence> sequenceList = new List<sequence>();
     //Current sequence
     sequence currentSequence;
     //List of sequences
-    sequence sequence1 = new sequence_1();
+    //[SerializeField] GameObject sequence_1;
+    [SerializeField] sequence[] sequenceList;
 
     void Start()
     {
-        currentSequence = sequence1;
+        currentSequence = sequenceList[0];
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(currentSequence != null && !currentSequence.hasEnded){
-            currentSequence.startSequence();
+    void Update(){
+        if(currentSequence != null){
+            if(currentSequence.hasStarted){
+                StartCoroutine(currentSequence.startSequence());
+            }
+
+            if(currentSequence.hasEnded){
+                currentSequence.endSequence();
+                currentSequence = null;
+            }
         }
     }
+
 
     void changeSequence(sequence nextSequence){
         if(nextSequence != currentSequence){

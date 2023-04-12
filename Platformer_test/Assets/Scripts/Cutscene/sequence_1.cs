@@ -4,19 +4,31 @@ using UnityEngine;
 
 public class sequence_1 : sequence
 {
-    float timer_sequence_duration = 0;
+    [Header("Actors")]
+    [SerializeField] SmoothCameraFollow mainCamera;
+    [SerializeField] Transform cameraTarget;
+    [SerializeField] Transform player;
+    [SerializeField] Hud hud;
 
-    public override void startSequence()
+
+    public override IEnumerator startSequence()
     {
+        hasStarted = false;
+        
         Debug.Log("Sequence Starting");
-        timer_sequence_duration += Time.deltaTime;
-        if(timer_sequence_duration >= 10){
-            endSequence();
-        }
+        yield return new WaitForSeconds(3);
+
+        mainCamera.target = cameraTarget;
+        hud.printText("HELLO!!!!");
+        yield return new WaitForSeconds(2);
+
+        hasEnded = true;
     }
 
-    public override void endSequence()
-    {
+
+    public override void endSequence(){
+        hud.endText();
+        mainCamera.target = player;
         hasEnded = true;
         Debug.Log("Sequence Ended");
     }

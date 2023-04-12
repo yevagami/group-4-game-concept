@@ -29,7 +29,6 @@ public class TextBoxScroll : MonoBehaviour
     void Start()
     {
         TMPComponent.text = "";
-        TMPComponent.fontSize = calculateFontSize(lines[lineIndex]);
     }
 
 
@@ -37,6 +36,7 @@ public class TextBoxScroll : MonoBehaviour
     void Update()
     {
         if(beginLine){
+            TMPComponent.fontSize = calculateFontSize(lines[lineIndex]);
             startLine();
         }
 
@@ -49,7 +49,7 @@ public class TextBoxScroll : MonoBehaviour
     //calculates the fontsize dempending on the line character count
     float calculateFontSize(string line){
         char[] lineCharacters = line.ToCharArray();
-        float Length = lineCharacters.Length;
+        float Length = 12015 / lineCharacters.Length;
 
         if(Length < minFontSize){
             return minFontSize;
@@ -59,7 +59,7 @@ public class TextBoxScroll : MonoBehaviour
             return maxFontSize;
         }
         
-        return 12015 / Length;
+        return Length;
     }
 
     
@@ -68,16 +68,15 @@ public class TextBoxScroll : MonoBehaviour
         timer_text += Time.deltaTime;
 
         if(timer_text >= textSpeed){
-            TMPComponent.text += lines[lineIndex][charIndex];
-            charIndex += 1;
-            timer_text = 0;
+            if(charIndex < lines[lineIndex].Length - 1){
+                TMPComponent.text += lines[lineIndex][charIndex];
+                charIndex += 1;
+                timer_text = 0;
+            }
+            else{
+                beginLine = false;
+            }
         }
-
-        if(charIndex > lines[lineIndex].Length - 1){
-            beginLine = false;
-        }
-
-
     }
 
 
