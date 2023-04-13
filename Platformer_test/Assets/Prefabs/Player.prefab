@@ -217,14 +217,14 @@ MonoBehaviour:
   player_rb2d: {fileID: 4830429718864648333}
   player_ground_check: {fileID: 4830429718971808127}
   player_speed: 15
-  player_horizontal_speed: 10
-  player_acceleration: 8
+  player_horizontal_speed: 6
+  player_acceleration: 3
   player_deceleration: 2
-  player_dash_speed: 15
+  player_dash_speed: 8
   player_dash_duration: 0.3
   player_dash_cooldown: 3
   player_dash_post_dash_multiplier: 0.5
-  player_jump_speed: 7
+  player_jump_speed: 6
   player_tap_jump_multiplier: 0.5
   player_air_jumps: 1
   player_hover_duration: 2
