@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField] float player_acceleration;
     [SerializeField] float player_deceleration;
 
+    private Animator anim;
+
+
+
     [Header("Dashing")]
     [SerializeField] float player_dash_speed;
     [SerializeField] float player_dash_duration;
@@ -58,6 +62,11 @@ public class Player : MonoBehaviour
     float player_dir;
 
 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +82,24 @@ public class Player : MonoBehaviour
         //Receives the input and stores it in the player_movement vector
         player_movement.x = Input.GetAxisRaw("Horizontal");
         player_movement.y = Input.GetAxisRaw("Vertical");
+
+        //Flips the Player's X axis
+        if (player_dir == 1.0 )
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else if (player_dir == -1.0)
+        {
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+
+
+        //Set animator parameters
+        anim.SetBool("Run", current_horizontal_input != 0.0);
 
         //Method to check if the player is grounded
         isGrounded = groundCheck();
