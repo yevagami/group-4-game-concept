@@ -9,14 +9,21 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody2D player_rb2d;
     [SerializeField] GameObject player_ground_check;
 
+
     //player stats
     [Header("Player Stats")]
     [SerializeField] float player_speed; 
+
 
     [Header("Horizontal Movement")]
     [SerializeField] float player_horizontal_speed; 
     [SerializeField] float player_acceleration;
     [SerializeField] float player_deceleration;
+    public bool hasHover = false;
+    public bool hasBark = false;
+    public bool hasAirJump = false;
+    private Animator anim;
+
 
     private Animator anim;
 
@@ -47,6 +54,7 @@ public class Player : MonoBehaviour
     float player_hover_timer;
     int hoverKeyPresses = 0;
 
+
     //states
     Vector2 player_movement;
     bool isGrounded = true;
@@ -59,7 +67,7 @@ public class Player : MonoBehaviour
     //for calculating the player's direction
     float current_horizontal_input;
     float last_horizontal_input;
-    float player_dir;
+    public float player_dir;
 
 
     private void Awake()
@@ -84,18 +92,8 @@ public class Player : MonoBehaviour
         player_movement.y = Input.GetAxisRaw("Vertical");
 
         //Flips the Player's X axis
-        if (player_dir == 1.0 )
-        {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
-        else if (player_dir == -1.0)
-        {
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
-        }
-        else
-        {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
+
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * player_dir, transform.localScale.y, transform.localScale.z);
 
 
         //Set animator parameters
@@ -124,6 +122,8 @@ public class Player : MonoBehaviour
 
 
         #region jumping
+            //Bool to render the powerup in the hud
+            hasAirJump = (player_jumps > 0);
 
             //Player can only jump when the space key is pressed and they are grounded
             if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
@@ -195,7 +195,7 @@ public class Player : MonoBehaviour
 
         #region hovering
 
-        if(Input.GetKeyDown(KeyCode.J) && hoverKeyPresses <= 2){
+        if(Input.GetKeyDown(KeyCode.J) && hoverKeyPresses <= 2 && hasHover){
             isHovering = !isHovering;
             isDashing = false;
             hoverKeyPresses += 1;

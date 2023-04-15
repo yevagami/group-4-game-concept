@@ -4,31 +4,46 @@ using UnityEngine;
 
 public class barkProjectileLaunch : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-    public Transform launchPoint;
+    [Header("Parameters")]
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Player player_;
+    [SerializeField] float originOffest;
 
-    public float shootTime;
+
+    [Header("Projectile Parameters")]
+    [SerializeField] float projectileSpeed;
+    [SerializeField] float projectileLife;
+    [SerializeField] float ProjectileDamage;
+
+    public float shootMeter;
+    public float shootMeterMax;
     public float shootCounter;
-
-    float player_direction;
 
     // Start is called before the first frame update
     void Start()
     {
-        shootCounter = shootTime;
-        
+        shootMeter = shootMeterMax;
     }
 
     // Update is called once per frame
     void Update()
     {
-        player_direction = gameObject.GetComponent<Player>().getPlayerDirection();
+        shootMeter += Time.deltaTime;
 
-        if(Input.GetKeyDown(KeyCode.I) && shootCounter <= 0)
+        if(shootMeter >= shootMeterMax){
+            shootMeter = shootMeterMax;
+        }
+
+        if(Input.GetKeyDown(KeyCode.I) && shootMeter - shootCounter > 0 && player_.hasBark)
             {
-                Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
-                shootCounter = shootTime;
+                GameObject projectile = Instantiate(projectilePrefab, new Vector3(
+                    gameObject.transform.position.x + (originOffest * player_.player_dir),
+                    gameObject.transform.position.y,
+                    gameObject.transform.position.z
+                    ), Quaternion.identity);
+
+                projectile.gameObject.GetComponent<barkProjectile>().setProjectileParameters(projectileSpeed * player_.player_dir, projectileLife, ProjectileDamage);
+                shootMeter -= shootCounter;
             }
-        shootCounter -= Time.deltaTime;
     }
 }
