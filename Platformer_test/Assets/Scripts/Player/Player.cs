@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     [SerializeField] float player_hover_duration;
     [SerializeField] float player_hover_multiplier;
     [SerializeField] float player_hover_speed;
+    public bool hasHover = false;
     float player_hover_timer;
     int hoverKeyPresses = 0;
 
@@ -195,7 +196,7 @@ public class Player : MonoBehaviour
 
         #region hovering
 
-        if(Input.GetKeyDown(KeyCode.J) && hoverKeyPresses <= 2){
+        if(Input.GetKeyDown(KeyCode.J) && hoverKeyPresses <= 2 && hasHover){
             isHovering = !isHovering;
             isDashing = false;
             hoverKeyPresses += 1;

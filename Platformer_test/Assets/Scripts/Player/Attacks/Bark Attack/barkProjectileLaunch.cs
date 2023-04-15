@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class barkProjectileLaunch : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-    public Transform launchPoint;
-
-    public float shootTime;
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Transform launchPoint;
+    public float shootMeter;
+    public float shootMeterMax;
     public float shootCounter;
-
-    float player_direction;
 
     // Start is called before the first frame update
     void Start()
     {
-        shootCounter = shootTime;
-        
+        shootMeter = shootMeterMax;
     }
 
     // Update is called once per frame
     void Update()
     {
-        player_direction = gameObject.GetComponent<Player>().getPlayerDirection();
+        shootMeter += Time.deltaTime;
 
-        if(Input.GetKeyDown(KeyCode.I) && shootCounter <= 0)
+        if(shootMeter >= shootMeterMax){
+            shootMeter = shootMeterMax;
+        }
+
+        if(Input.GetKeyDown(KeyCode.I) && shootMeter - shootCounter > 0)
             {
                 Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
-                shootCounter = shootTime;
+                shootMeter -= shootCounter;
             }
-        shootCounter -= Time.deltaTime;
     }
 }

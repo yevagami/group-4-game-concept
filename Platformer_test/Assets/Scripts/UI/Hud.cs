@@ -1,11 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Hud : MonoBehaviour
 {
+    [Header("Textbox")]
     [SerializeField] GameObject textBox;
     [SerializeField] TextBoxScroll text;
+
+
+    [Header("Healthbar")]
+    [SerializeField] PlayerHealth playerHealth_;
+    [SerializeField] Image healthBar;
+
+    [Header("Bark")]
+    [SerializeField] barkProjectileLaunch playerShoot;
+    [SerializeField] Image shootBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +27,8 @@ public class Hud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        healthBar.fillAmount = playerHealth_.health / playerHealth_.maxHealth;
+        shootBar.fillAmount = playerShoot.shootMeter / playerShoot.shootMeterMax;
     }
     
     public void printText(string text_){
