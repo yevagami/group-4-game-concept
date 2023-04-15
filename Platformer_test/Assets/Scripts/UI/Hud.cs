@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine.UI;
+
 using UnityEngine;
 
 public class Hud : MonoBehaviour
 {
+
     [Header("Textbox")]
     [SerializeField] GameObject textBox;
     [SerializeField] TextBoxScroll text;
@@ -26,6 +29,7 @@ public class Hud : MonoBehaviour
     [SerializeField] Player player_;
     List<Sprite> powerupsToRender;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +39,10 @@ public class Hud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         healthBar.fillAmount = playerHealth_.health / playerHealth_.maxHealth;
         shootBar.fillAmount = playerShoot.shootMeter / playerShoot.shootMeterMax;
+
     }
     
     public void printText(string text_){
@@ -49,7 +55,9 @@ public class Hud : MonoBehaviour
         textBox.SetActive(false);
     }
 
+
     public void RenderPowerups(){
 
     }
+
 }

@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
     private Animator anim;
 
 
+    private Animator anim;
+
+
+
     [Header("Dashing")]
     [SerializeField] float player_dash_speed;
     [SerializeField] float player_dash_duration;
@@ -88,7 +92,9 @@ public class Player : MonoBehaviour
         player_movement.y = Input.GetAxisRaw("Vertical");
 
         //Flips the Player's X axis
+
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * player_dir, transform.localScale.y, transform.localScale.z);
+
 
         //Set animator parameters
         anim.SetBool("Run", current_horizontal_input != 0.0);

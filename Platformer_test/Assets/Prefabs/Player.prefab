@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 4830429718864648335}
   - component: {fileID: 3103020381021114424}
   - component: {fileID: 7266634273047139346}
+
   - component: {fileID: 2333186098235075456}
+
   - component: {fileID: 1024000069}
   m_Layer: 0
   m_Name: Player
@@ -34,7 +36,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.636, y: -2.635, z: 0.0018944012}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+
   m_ConstrainProportionsScale: 1
+
   m_Children:
   - {fileID: 4830429718971808126}
   m_Father: {fileID: 0}
@@ -81,7 +85,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+
   m_Sprite: {fileID: 21300000, guid: 235699b4fe7b88748bc6699fa21a03d6, type: 3}
+
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -131,7 +137,9 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.01, y: 3.53}
+
     newSize: {x: 5.01, y: 3.53}
+
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -154,6 +162,7 @@ MonoBehaviour:
   player_rb2d: {fileID: 4830429718864648333}
   player_ground_check: {fileID: 4830429718971808127}
   player_speed: 15
+
   player_horizontal_speed: 8
   player_acceleration: 5
   player_deceleration: 0.03
@@ -161,10 +170,11 @@ MonoBehaviour:
   hasBark: 0
   hasAirJump: 0
   player_dash_speed: 10
+
   player_dash_duration: 0.3
   player_dash_cooldown: 3
   player_dash_post_dash_multiplier: 0.5
-  player_jump_speed: 7
+  player_jump_speed: 6
   player_tap_jump_multiplier: 0.5
   player_air_jumps: 1
   player_hover_duration: 2
@@ -185,6 +195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
+
+
 --- !u!114 &7266634273047139346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,9 +230,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f361e35828f1e14c8a8ba897a626966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   player_: {fileID: 4830429718864648335}
   attackRadius: 1.4
   originOffest: 2.5
+
 --- !u!95 &1024000069
 Animator:
   serializedVersion: 5
