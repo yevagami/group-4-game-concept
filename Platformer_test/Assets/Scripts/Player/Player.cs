@@ -24,11 +24,6 @@ public class Player : MonoBehaviour
     public bool hasAirJump = false;
     private Animator anim;
 
-
-    private Animator anim;
-
-
-
     [Header("Dashing")]
     [SerializeField] float player_dash_speed;
     [SerializeField] float player_dash_duration;
