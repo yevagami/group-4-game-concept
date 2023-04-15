@@ -1,67 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &506406017447198341
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4739595678568650055}
-  m_Layer: 0
-  m_Name: scratchLaunchPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4739595678568650055
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506406017447198341}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4830429718864648435}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1146132025630165106
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7481747461239502965}
-  m_Layer: 0
-  m_Name: barkLaunchPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7481747461239502965
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146132025630165106}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4830429718864648435}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4830429718864648432
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,9 +13,9 @@ GameObject:
   - component: {fileID: 4830429718864648333}
   - component: {fileID: 4830429718864648332}
   - component: {fileID: 4830429718864648335}
-  - component: {fileID: 7266634273047139346}
-  - component: {fileID: 7025890322939238859}
   - component: {fileID: 3103020381021114424}
+  - component: {fileID: 7266634273047139346}
+  - component: {fileID: 2333186098235075456}
   - component: {fileID: 1024000069}
   m_Layer: 0
   m_Name: Player
@@ -99,8 +37,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4830429718971808126}
-  - {fileID: 7481747461239502965}
-  - {fileID: 4739595678568650055}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -218,11 +154,14 @@ MonoBehaviour:
   player_rb2d: {fileID: 4830429718864648333}
   player_ground_check: {fileID: 4830429718971808127}
   player_speed: 15
-  player_horizontal_speed: 7
+  player_horizontal_speed: 8
   player_acceleration: 5
   player_deceleration: 0.03
+  hasHover: 0
+  hasBark: 0
+  hasAirJump: 0
   player_dash_speed: 10
-  player_dash_duration: 0.2
+  player_dash_duration: 0.3
   player_dash_cooldown: 3
   player_dash_post_dash_multiplier: 0.5
   player_jump_speed: 7
@@ -231,40 +170,7 @@ MonoBehaviour:
   player_hover_duration: 2
   player_hover_multiplier: 0.5
   player_hover_speed: 3
-  hasHover: 0
---- !u!114 &7266634273047139346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4830429718864648432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bdb674912ce7894a937bf6f2e647e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 177388774471069434, guid: 01e43eb794fee5d48a1ff5ee349e8248, type: 3}
-  launchPoint: {fileID: 7481747461239502965}
-  shootMeter: 0
-  shootMeterMax: 5
-  shootCounter: 1.3
---- !u!114 &7025890322939238859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4830429718864648432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c74a0686c2908449922dc539614bbb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1222320519386510620, guid: 60c8604b6c9300b429f7ec9f2a878a29, type: 3}
-  launchPoint: {fileID: 4739595678568650055}
-  shootTime: 0.5
-  shootCounter: 0
+  player_dir: 0
 --- !u!114 &3103020381021114424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +185,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
+--- !u!114 &7266634273047139346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830429718864648432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdb674912ce7894a937bf6f2e647e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 177388774471069434, guid: 01e43eb794fee5d48a1ff5ee349e8248, type: 3}
+  player_: {fileID: 4830429718864648335}
+  originOffest: 1.4
+  projectileSpeed: 4
+  projectileLife: 2
+  ProjectileDamage: 10
+  shootMeter: 0
+  shootMeterMax: 5
+  shootCounter: 1.3
+--- !u!114 &2333186098235075456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830429718864648432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f361e35828f1e14c8a8ba897a626966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_: {fileID: 4830429718864648335}
+  attackRadius: 1.4
+  originOffest: 2.5
 --- !u!95 &1024000069
 Animator:
   serializedVersion: 5

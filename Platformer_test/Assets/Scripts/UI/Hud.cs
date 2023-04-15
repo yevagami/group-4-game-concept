@@ -14,9 +14,17 @@ public class Hud : MonoBehaviour
     [SerializeField] PlayerHealth playerHealth_;
     [SerializeField] Image healthBar;
 
+
     [Header("Bark")]
     [SerializeField] barkProjectileLaunch playerShoot;
     [SerializeField] Image shootBar;
+
+
+    [Header("Powerups")]
+    [SerializeField] GameObject[] powerupRenderPos;
+    [SerializeField] List<Sprite> powerupSprites;
+    [SerializeField] Player player_;
+    List<Sprite> powerupsToRender;
 
     // Start is called before the first frame update
     void Start()
@@ -39,5 +47,9 @@ public class Hud : MonoBehaviour
 
     public void endText(){
         textBox.SetActive(false);
+    }
+
+    public void RenderPowerups(){
+
     }
 }

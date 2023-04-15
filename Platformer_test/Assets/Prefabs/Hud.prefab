@@ -834,6 +834,16 @@ MonoBehaviour:
   healthBar: {fileID: 7216246448516497129}
   playerShoot: {fileID: 0}
   shootBar: {fileID: 7216246447622635425}
+  powerupRenderPos:
+  - {fileID: 7216246447914134795}
+  - {fileID: 7216246448305796886}
+  - {fileID: 7216246448399122855}
+  - {fileID: 7216246447212326726}
+  powerupSprites:
+  - {fileID: -307754018, guid: c2a97b1ddf3a03f4dbf578986fd8aaf0, type: 3}
+  - {fileID: -1408962941, guid: c2a97b1ddf3a03f4dbf578986fd8aaf0, type: 3}
+  - {fileID: -618409600, guid: c2a97b1ddf3a03f4dbf578986fd8aaf0, type: 3}
+  - {fileID: -1513815674, guid: c2a97b1ddf3a03f4dbf578986fd8aaf0, type: 3}
 --- !u!1 &7216246448305796886
 GameObject:
   m_ObjectHideFlags: 0
