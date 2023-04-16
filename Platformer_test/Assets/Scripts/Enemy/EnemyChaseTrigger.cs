@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyChaseTrigger : MonoBehaviour
 {
-    [SerializeField] EnemyStates enemy_script;
+    [SerializeField] EnemyStates enemy;
+    [SerializeField] Collider2D chaseTrigger;
     [SerializeField] float chase_duration;
     float timer_chase = 0;
     bool start_timer = false;
@@ -21,7 +22,7 @@ public class EnemyChaseTrigger : MonoBehaviour
             timer_chase += Time.deltaTime;
             if(timer_chase >= chase_duration){
                 start_timer = false;
-                enemy_script.switchState("idle");
+                enemy.switchState("patrol");
             }
         }
     }
@@ -30,7 +31,7 @@ public class EnemyChaseTrigger : MonoBehaviour
         if(other.tag == "Player"){
             timer_chase = 0;
             start_timer = false;
-            enemy_script.switchState("chase");
+            enemy.switchState("chase");
         }
     }
 

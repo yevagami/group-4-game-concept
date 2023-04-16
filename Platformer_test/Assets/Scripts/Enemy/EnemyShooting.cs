@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    public GameObject projectile;
-    public Transform projectilePos;
+    [SerializeField] GameObject projectile;
+    [SerializeField] EnemyStates enemy;
+    [SerializeField] float cooldown;
 
     private float timer;
 
@@ -20,15 +21,17 @@ public class EnemyShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer > 2)
-        {
+        if(timer > cooldown){
             timer = 0;
             shoot();
         }
     }
 
-    void shoot()
-    {
-        Instantiate(projectile, projectilePos.position, Quaternion.identity);
+    void shoot(){
+        Instantiate(projectile, new Vector3(
+            gameObject.transform.position.x + 1 * (enemy.enemy_Dir),
+            gameObject.transform.position.y,
+            gameObject.transform.position.z
+        ), Quaternion.identity);
     }
 }
