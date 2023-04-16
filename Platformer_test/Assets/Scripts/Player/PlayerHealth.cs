@@ -22,8 +22,7 @@ public class PlayerHealth : MonoBehaviour
 
     {
         health -= amount;
-        if (health < 0)
-        {
+        if (health < 0){
             Destroy(gameObject);
         }
     }

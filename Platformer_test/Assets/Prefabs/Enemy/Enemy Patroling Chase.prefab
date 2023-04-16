@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8686005206481975833}
   - component: {fileID: 6180390136807090630}
+  - component: {fileID: 3226137353418199257}
   m_Layer: 0
-  m_Name: Ground Check
+  m_Name: EdgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.67, y: 0}
+  m_Offset: {x: 1, y: -0.59}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,8 +57,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31, y: 1.09}
+  m_Size: {x: 0.57, y: 0.15}
   m_EdgeRadius: 0
+--- !u!114 &3226137353418199257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667399425609107785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac23ba71c3411684397570c1b3f98424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  edgeCollider: {fileID: 6180390136807090630}
+  enemy: {fileID: 1945418313883816451}
 --- !u!1 &5532398844350433085
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,8 +89,8 @@ GameObject:
   - component: {fileID: 5532398844350433083}
   - component: {fileID: 1945418313883816451}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Weak Point
+  m_Name: Enemy Patroling Chase
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +154,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.82268715, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -237,16 +252,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_chase_trigger: {fileID: 0}
+  enemy_edge_check: {fileID: 6180390136807090630}
   enemy_rb2d: {fileID: 5532398844350433086}
-  enemy_speed: 1
+  enemy_walkSpeed: 1.5
   target: {fileID: 0}
-  chase_collider: {fileID: 0}
-  isChasing: 0
-  patrol_duration: 0
-  isIdle: 0
+  chase_speed: 3
   isGrounded: 0
   isTouchingWall: 0
   playerDetected: 0
+  enemy_Dir: 1
+  currentState: 
 --- !u!1 &7994308136418991874
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5452015876373399495}
   - component: {fileID: 4543696012226160173}
-  - component: {fileID: 7224332160568392680}
+  - component: {fileID: 8487162961776485056}
   m_Layer: 0
   m_Name: Chase Trigger
   m_TagString: Untagged
@@ -295,8 +310,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
---- !u!114 &7224332160568392680
+  m_Radius: 2.5
+--- !u!114 &8487162961776485056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,7 +320,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7994308136418991874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c689d2be918d345bc3eb65aa6dc24e, type: 3}
+  m_Script: {fileID: 11500000, guid: f64708719e740c845afdac48c007d3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_script: {fileID: 1945418313883816451}
+  enemy: {fileID: 1945418313883816451}
+  chaseTrigger: {fileID: 4543696012226160173}
+  chase_duration: 3

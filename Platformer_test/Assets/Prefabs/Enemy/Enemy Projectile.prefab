@@ -120,8 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f0a68d347ab8a49bdb9e2f88fdc865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  force: 5
+  rb: {fileID: 8922669113137865131}
+  power: 20
+  speed: 3
+  projectileLife: 5
 --- !u!61 &3689555034190848780
 BoxCollider2D:
   m_ObjectHideFlags: 0

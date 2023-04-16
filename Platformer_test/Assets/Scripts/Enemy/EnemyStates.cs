@@ -6,28 +6,28 @@ public class EnemyStates : MonoBehaviour
 {
     //Basic stuff
     [Header("Properties")]
-    [SerializeField] GameObject enemy_chase_trigger;
+    [SerializeField] Collider2D enemy_chase_trigger;
+    [SerializeField] Collider2D enemy_edge_check;
     [SerializeField] Rigidbody2D enemy_rb2d;
-    [SerializeField] float enemy_speed;
+    [SerializeField] float enemy_walkSpeed;
+    float enemy_speed;
+
 
     //Chase state
     [Header("Chase State")]
     [SerializeField] Transform target;
-    [SerializeField] CircleCollider2D chase_collider;
-
-    //Patrol state
-    [Header("Patrol State")]
-    [SerializeField] float patrol_duration;
-    float timer_patrol;
+    [SerializeField] float chase_speed;
 
 
     //Edge check
     [HideInInspector] public bool isGrounded = false;
     [HideInInspector] public bool isTouchingWall = false;
     [HideInInspector] public bool playerDetected = false;
+    [SerializeField] string initialState;
+    public int enemy_Dir;
 
     //States
-    string currentState;
+    public string currentState;
     public void switchState(string state){
         if(state != currentState){
             currentState = state;
@@ -38,7 +38,10 @@ public class EnemyStates : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = "idle";
+        enemy_speed = enemy_walkSpeed;
+        currentState = (initialState != "") ? initialState : "patrol";
+        if(enemy_edge_check != null) enemy_edge_check.offset = new Vector2(0.81f * enemy_Dir, enemy_edge_check.offset.y);
+        if(target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
 
@@ -50,12 +53,28 @@ public class EnemyStates : MonoBehaviour
         }
 
         if(currentState == "patrol"){
-            
+            enemy_rb2d.velocity = new Vector2(enemy_Dir * enemy_speed, enemy_rb2d.velocity.y);
         }
 
         if(currentState == "chase"){
-            enemy_rb2d.velocity = new Vector2((target.position.x - gameObject.transform.position.x), 0).normalized * enemy_speed;
+            enemy_speed = chase_speed;
+            Vector2 targetDirection = target.position - gameObject.transform.position;
+            targetDirection = targetDirection.normalized;
+            enemy_rb2d.velocity =  new Vector2(targetDirection.x * enemy_speed, enemy_rb2d.velocity.y);
+            if(Mathf.Sign(targetDirection.x) != enemy_Dir){
+                flip();
+            }
         }
+
+        if((!isGrounded || isTouchingWall) && enemy_edge_check != null){
+            flip();
+        }
+    }
+
+    public void flip(){
+        enemy_Dir *= -1;
+        if(enemy_edge_check != null) enemy_edge_check.offset = new Vector2(0.81f * enemy_Dir, enemy_edge_check.offset.y);
+        Debug.Log("Flip");
     }
 
 }

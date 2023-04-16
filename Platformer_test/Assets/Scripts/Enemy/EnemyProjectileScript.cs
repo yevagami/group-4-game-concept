@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class EnemyProjectileScript : MonoBehaviour
 {
-
-    public GameObject player;
-    private Rigidbody2D rb;
-    public float force;
-    private float timer;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] float power;
+    [SerializeField] float speed;
+    [SerializeField] float projectileLife;
+    Transform player;
+    float timer = 0;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        Vector3 direction = player.transform.position - transform.position;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+        Vector3 direction = player.position - transform.position;
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
 
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
@@ -27,17 +28,23 @@ public class EnemyProjectileScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer > 10)
-        {
+        if(timer >= projectileLife){
             Destroy(gameObject);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
+        switch(other.tag){
+            case "Player":
+                other.GetComponent<PlayerHealth>().TakeDamage(power);
+                break;
+            
+            case "enemy":
+                other.GetComponent<EnemyHealth>().TakeDamage(power);
+                break;
         }
+
+        Destroy(gameObject);
     }
 }
