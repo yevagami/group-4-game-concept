@@ -10,6 +10,8 @@ public class EnemyStates : MonoBehaviour
     [SerializeField] Collider2D enemy_edge_check;
     [SerializeField] Rigidbody2D enemy_rb2d;
     [SerializeField] float enemy_walkSpeed;
+    [SerializeField] Animator enemyAnimator;
+    [SerializeField] SpriteRenderer sprite;
     float enemy_speed;
 
 
@@ -40,7 +42,7 @@ public class EnemyStates : MonoBehaviour
     {
         enemy_speed = enemy_walkSpeed;
         currentState = (initialState != "") ? initialState : "patrol";
-        if(enemy_edge_check != null) enemy_edge_check.offset = new Vector2(0.81f * enemy_Dir, enemy_edge_check.offset.y);
+        if(enemy_edge_check != null) enemy_edge_check.offset = new Vector2(1.6f * enemy_Dir, enemy_edge_check.offset.y);
         if(target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -69,12 +71,15 @@ public class EnemyStates : MonoBehaviour
         if((!isGrounded || isTouchingWall) && enemy_edge_check != null){
             flip();
         }
+
+        //animation stuff
+        if(enemyAnimator != null) enemyAnimator.SetBool("isMoving", (Mathf.Abs(enemy_rb2d.velocity.x) > 0.01));
     }
 
     public void flip(){
         enemy_Dir *= -1;
-        if(enemy_edge_check != null) enemy_edge_check.offset = new Vector2(0.81f * enemy_Dir, enemy_edge_check.offset.y);
-        Debug.Log("Flip");
+        if(enemy_edge_check != null) enemy_edge_check.offset = new Vector2(1.6f * enemy_Dir, enemy_edge_check.offset.y);
+        sprite.flipX = !sprite.flipX;
     }
 
 }

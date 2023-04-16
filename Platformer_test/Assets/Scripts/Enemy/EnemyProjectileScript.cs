@@ -26,6 +26,8 @@ public class EnemyProjectileScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameObject.transform.localRotation = Quaternion.Euler(0, 0, gameObject.transform.localRotation.z + 0.5f);
+
         timer += Time.deltaTime;
 
         if(timer >= projectileLife){

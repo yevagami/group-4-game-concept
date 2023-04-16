@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1, y: -0.59}
+  m_Offset: {x: 1.6, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.57, y: 0.15}
+  m_Size: {x: 0.57, y: 0.37}
   m_EdgeRadius: 0
 --- !u!114 &3226137353418199257
 MonoBehaviour:
@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 5532398844350433082}
   - component: {fileID: 5532398844350433083}
   - component: {fileID: 1945418313883816451}
+  - component: {fileID: 4582930085156867245}
   m_Layer: 0
   m_Name: Enemy Patroling Chase
   m_TagString: enemy
@@ -104,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 5532398844350433085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2, y: -2.36, z: 0}
-  m_LocalScale: {x: 0.5749, y: 1.176993, z: 0.5749}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5452015876373399495}
@@ -153,8 +154,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.82268715, a: 1}
+  m_Sprite: {fileID: -1546688482, guid: 5ca82eec5efd8544384488c9758c9130, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -177,18 +178,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.07631159, y: 0.16025388}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4346533, y: 1.8699491}
   m_EdgeRadius: 0
 --- !u!50 &5532398844350433086
 Rigidbody2D:
@@ -238,7 +239,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
 --- !u!114 &1945418313883816451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,13 +255,36 @@ MonoBehaviour:
   enemy_edge_check: {fileID: 6180390136807090630}
   enemy_rb2d: {fileID: 5532398844350433086}
   enemy_walkSpeed: 1.5
+  enemyAnimator: {fileID: 4582930085156867245}
+  sprite: {fileID: 5532398844350433080}
   target: {fileID: 0}
-  chase_speed: 3
+  chase_speed: 2
   isGrounded: 0
   isTouchingWall: 0
   playerDetected: 0
+  initialState: 
   enemy_Dir: 1
   currentState: 
+--- !u!95 &4582930085156867245
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5532398844350433085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 90294726549101f4cb6c92ba781e1a4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &7994308136418991874
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +333,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 5
 --- !u!114 &8487162961776485056
 MonoBehaviour:
   m_ObjectHideFlags: 0
