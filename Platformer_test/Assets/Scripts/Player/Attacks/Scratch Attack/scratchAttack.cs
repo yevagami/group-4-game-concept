@@ -20,7 +20,7 @@ public class scratchAttack : MonoBehaviour
             Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(new Vector2(gameObject.transform.position.x + (originOffest * player_.player_dir), gameObject.transform.position.y),attackRadius);
             foreach (Collider2D objects in overlappedColliders){
                 if(objects.gameObject.tag == "enemy"){
-                    Debug.Log("HIT");
+                    objects.GetComponent<EnemyHealth>().TakeDamage(10);
                 }
             }
 
