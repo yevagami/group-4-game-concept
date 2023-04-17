@@ -21,11 +21,12 @@ public class Hud : MonoBehaviour
     [Header("Bark")]
     [SerializeField] barkProjectileLaunch playerShoot;
     [SerializeField] Image shootBar;
+    [SerializeField] GameObject shootBarObject;
 
 
     [Header("Powerups")]
-    [SerializeField] GameObject[] powerupRenderPos;
-    [SerializeField] List<Sprite> powerupSprites;
+    [SerializeField] SpriteRenderer[] powerupRenderPos;
+    [SerializeField] Sprite[] powerupSprites;
     [SerializeField] Player player_;
     List<Sprite> powerupsToRender;
 
@@ -43,6 +44,11 @@ public class Hud : MonoBehaviour
         healthBar.fillAmount = playerHealth_.health / playerHealth_.maxHealth;
         shootBar.fillAmount = playerShoot.shootMeter / playerShoot.shootMeterMax;
 
+        if(player_.hasAirJump) powerupRenderPos[0].sprite = powerupSprites[0];
+        if(player_.hasHover) powerupRenderPos[1].sprite = powerupSprites[1];
+        if(player_.hasOwl) powerupRenderPos[2].sprite = powerupSprites[2];
+        if(player_.hasBark) powerupRenderPos[3].sprite = powerupSprites[3];
+        shootBarObject.SetActive(player_.hasBark);
     }
     
     public void printText(string text_){

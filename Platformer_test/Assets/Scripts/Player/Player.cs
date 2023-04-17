@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public bool hasHover = false;
     public bool hasBark = false;
     public bool hasAirJump = false;
+    public bool hasOwl = false;
     private Animator anim;
 
     [Header("Dashing")]
@@ -118,7 +119,7 @@ public class Player : MonoBehaviour
 
         #region jumping
             //Bool to render the powerup in the hud
-            hasAirJump = (player_jumps > 0);
+            hasAirJump = (player_air_jumps > 0);
 
             //Player can only jump when the space key is pressed and they are grounded
             if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
