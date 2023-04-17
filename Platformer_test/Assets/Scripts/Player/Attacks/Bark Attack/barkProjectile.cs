@@ -36,7 +36,7 @@ public class barkProjectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "enemy"){
-            Debug.Log("HIT");
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             Destroy(gameObject);
         }
     }
