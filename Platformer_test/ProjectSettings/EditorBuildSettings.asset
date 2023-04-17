@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Scenes/TotemLevel3.unity
     guid: 8e69dab45817e0e438837e21616bd2df
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/LevelDesignTest.unity
+    guid: 16d97374ab355ba45810efb5bac6f1f1
   m_configObjects: {}
