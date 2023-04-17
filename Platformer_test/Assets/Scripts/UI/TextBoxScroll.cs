@@ -49,7 +49,7 @@ public class TextBoxScroll : MonoBehaviour
     //calculates the fontsize dempending on the line character count
     float calculateFontSize(string line){
         char[] lineCharacters = line.ToCharArray();
-        float Length = 12015 / lineCharacters.Length;
+        float Length = 10000 / lineCharacters.Length;
 
         if(Length < minFontSize){
             return minFontSize;
@@ -68,13 +68,14 @@ public class TextBoxScroll : MonoBehaviour
         timer_text += Time.deltaTime;
 
         if(timer_text >= textSpeed){
-            if(charIndex < lines[lineIndex].Length - 1){
+            if(charIndex < lines[lineIndex].Length){
                 TMPComponent.text += lines[lineIndex][charIndex];
                 charIndex += 1;
                 timer_text = 0;
             }
             else{
                 beginLine = false;
+                newLine();
             }
         }
     }
@@ -91,6 +92,9 @@ public class TextBoxScroll : MonoBehaviour
         if(lineIndex < lines.Length){
             TMPComponent.fontSize = calculateFontSize(lines[lineIndex]);
             beginLine = true;
+        }
+        else{
+            lineIndex = 0;
         }
     }
     

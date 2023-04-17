@@ -138,7 +138,7 @@ MonoBehaviour:
   TMPComponent: {fileID: 7216246448815866433}
   textSpeed: 0.1
   minFontSize: 10
-  maxFontSize: 68
+  maxFontSize: 37
   beginLine: 0
   lines:
   - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1105,7 +1105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7216246448602474900
 RectTransform:
   m_ObjectHideFlags: 0

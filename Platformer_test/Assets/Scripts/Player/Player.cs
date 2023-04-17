@@ -91,12 +91,13 @@ public class Player : MonoBehaviour
 
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * player_dir, transform.localScale.y, transform.localScale.z);
 
+        //Method to check if the player is grounded
+        isGrounded = groundCheck();
 
         //Set animator parameters
         anim.SetBool("Run", current_horizontal_input != 0.0);
+        anim.SetBool("Jump", isJumping);
 
-        //Method to check if the player is grounded
-        isGrounded = groundCheck();
 
         //Change the player's speed if they are hovering
         player_speed = (isHovering) ? player_hover_speed : player_horizontal_speed;
@@ -141,6 +142,7 @@ public class Player : MonoBehaviour
             //If the player is in the middle of jumping and the spacebar was released
             //The vertical velocity is multiplied by a the 'player_tap_jump_multiplier'
             if((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W)) && isJumping ){
+                anim.SetBool("Jump", false);
                 isJumping = false;
                 player_rb2d.velocity = new Vector2(player_rb2d.velocity.x, player_rb2d.velocity.y * player_tap_jump_multiplier);
             }

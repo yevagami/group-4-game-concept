@@ -51,9 +51,9 @@ public class Hud : MonoBehaviour
         shootBarObject.SetActive(player_.hasBark);
     }
     
-    public void printText(string text_){
+    public void printText(string[] text_){
         textBox.SetActive(true);
-        text.lines[0] = text_;
+        text.lines = text_;
         text.beginLine = true;
     }
 
